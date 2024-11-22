@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import LoginScreen from '../LoginScreen'; 
 import ProfilePage from '../ProfilePage'; 
 import SignUpScreen from '../SignUpScreen';
+import PasswordRecovery from '../PasswordRecovery';
 
 const Stack = createStackNavigator();
 export default function AppNavigator() {
@@ -39,6 +40,16 @@ export default function AppNavigator() {
             }
           }}
         />
+        <Stack.Screen
+          name="PasswordRecovery"
+          component={PasswordRecovery}
+          options={{ title: 'Password Recovery',
+            headerStyle: {
+              backgroundColor: '#EFE9E2',
+              borderBottomColor: '#EFE9E2',
+              headerTintColor: '#000',
+            }
+          }}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
