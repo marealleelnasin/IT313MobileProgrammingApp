@@ -1,17 +1,6 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import ProfilePage from './components/ProfilePage'; 
+import AppNavigator from './components/Navigation/AppNavigator'; 
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <ProfilePage />
-    </View>
-  );
+  return <AppNavigator />;
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
