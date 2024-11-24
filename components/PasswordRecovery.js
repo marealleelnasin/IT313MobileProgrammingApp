@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import { StyleSheet, View, Text, TextInput, TouchableOpacity, useColorScheme } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
@@ -8,6 +8,17 @@ export default function PasswordRecovery() {
   const [isDarkMode, setIsDarkMode] = useState(systemColorScheme === 'dark');
   const [email, setEmail] = useState('');
   const navigation = useNavigation();
+  
+  useLayoutEffect(() => {
+    // Adjust stack navigator header colors based on dark mode
+    navigation.setOptions({
+      headerStyle: {
+        backgroundColor: isDarkMode ? '#333' : '#FFE5E5',
+        borderBottomColor: isDarkMode ? '#333' : '#FFE5E5',
+      },
+      headerTintColor: isDarkMode ? '#fff' : '#333',
+    });
+  }, [isDarkMode, navigation]);
 
   const styles = isDarkMode ? darkStyles : lightStyles;
 

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'; 
 import { StyleSheet, View, Text, TextInput, TouchableOpacity, Image, useColorScheme } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native'; // Import the useNavigation hook
+import { useNavigation } from '@react-navigation/native'; 
 
 export default function LoginScreen() {
   const systemColorScheme = useColorScheme();
@@ -9,7 +9,7 @@ export default function LoginScreen() {
   const [showPassword, setShowPassword] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const navigation = useNavigation(); // Get the navigation prop
+  const navigation = useNavigation(); 
 
   const styles = isDarkMode ? darkStyles : lightStyles;
 
@@ -23,14 +23,14 @@ export default function LoginScreen() {
 
   const handleLogin = () => {
     if (username === 'user' && password === 'password') {
-      navigation.navigate('ProfilePage'); // Navigate to ProfilePage if credentials are correct
+      navigation.navigate('ProfilePage'); 
     } else {
       alert('Invalid credentials');
     }
   };
 
   const navigateToSignUp = () => {
-    navigation.navigate('SignUpScreen'); // Navigate to the Sign-Up screen
+    navigation.navigate('SignUpScreen'); 
   };
 
   return (
@@ -56,7 +56,7 @@ export default function LoginScreen() {
             placeholderTextColor={isDarkMode ? '#b0b0b0' : '#887a7a'}
             style={styles.input}
             value={username}
-            onChangeText={(text) => setUsername(text)} // Update username state
+            onChangeText={(text) => setUsername(text)} 
           />
         </View>
         <View style={styles.iconInput}>
@@ -67,13 +67,20 @@ export default function LoginScreen() {
             secureTextEntry={!showPassword}
             style={styles.input}
             value={password}
-            onChangeText={(text) => setPassword(text)} // Update password state
+            onChangeText={(text) => setPassword(text)} 
           />
         </View>
       </View>
 
-      <TouchableOpacity style={styles.button} onPress={handleLogin}> {/* Call handleLogin on button press */}
-        <Text style={isDarkMode? styles.darkButtonText : styles.lightButtonText}>Login</Text>
+      {/* Forgot Password Section */}
+      <View style={styles.forgotPasswordWrapper}>
+        <TouchableOpacity onPress={() => navigation.navigate('PasswordRecovery')}>
+          <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
+        </TouchableOpacity>
+      </View>
+
+      <TouchableOpacity style={styles.button} onPress={handleLogin}>
+        <Text style={isDarkMode ? styles.darkButtonText : styles.lightButtonText}>Login</Text>
       </TouchableOpacity>
 
       <View style={styles.socialLoginContainer}>
@@ -90,9 +97,9 @@ export default function LoginScreen() {
       </View>
 
       <View style={styles.signupContainer}>
-        <Text style={isDarkMode? styles.darkSignupText : styles.lightSignupText}>
+        <Text style={isDarkMode ? styles.darkSignupText : styles.lightSignupText}>
           Don’t have an account?
-          <Text style={styles.signupLinkText} onPress={navigateToSignUp}> REGISTER</Text> {/* Add onPress to navigate */}
+          <Text style={styles.signupLinkText} onPress={navigateToSignUp}> REGISTER</Text> 
         </Text>
         <TouchableOpacity style={styles.helpButton}>
           <Ionicons name="help-circle-outline" size={20} color={isDarkMode ? '#EFE9E2' : '#333'} />
@@ -154,6 +161,15 @@ const commonStyles = {
     borderRadius: 8,
     alignItems: 'center',
     marginBottom: 20,
+  },
+  forgotPasswordWrapper: {
+    width: '100%',  // Ensure it takes up the full width
+    alignItems: 'flex-end', // Align the text to the right
+  },
+  forgotPasswordText: {
+    fontSize: 14,
+    color: '#000',  // Default color for light mode
+    marginBottom: 10,
   },
   socialLoginContainer: {
     flexDirection: 'row',
@@ -231,6 +247,10 @@ const lightStyles = StyleSheet.create({
     ...commonStyles.title,
     color: '#333',
   },
+  forgotPasswordText: {
+    ...commonStyles.forgotPasswordText,
+    color: '#000',  // Light mode color
+  },
   button: {
     ...commonStyles.button,
     backgroundColor: '#ff6b81',
@@ -246,6 +266,10 @@ const darkStyles = StyleSheet.create({
   title: {
     ...commonStyles.title,
     color: '#FFE5E5',
+  },
+  forgotPasswordText: {
+    ...commonStyles.forgotPasswordText,
+    color: '#fff',  // Dark mode color
   },
   inputContainer: {
     ...commonStyles.inputContainer,

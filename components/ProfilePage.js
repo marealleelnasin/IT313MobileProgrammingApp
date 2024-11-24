@@ -6,10 +6,10 @@ import { useNavigation } from '@react-navigation/native';
 const ProfilePage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const navigation = useNavigation(); // Access navigation object
+  const navigation = useNavigation(); 
 
   useEffect(() => {
-    // Simulate loading
+    
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 2000);
@@ -19,11 +19,11 @@ const ProfilePage = () => {
   useEffect(() => {
     navigation.setOptions({
       headerStyle: {
-        backgroundColor: isDarkMode ? '#333' : '#EFE9E2', // Black for dark mode
+        backgroundColor: isDarkMode ? '#333' : '#EFE9E2', 
         borderBottomColor: isDarkMode ? '#333' : '#EFE9E2',
         borderBottomWidth: 2,
       },
-      headerTintColor: isDarkMode ? '#fff' : '#000', // White text/icons in dark mode
+      headerTintColor: isDarkMode ? '#fff' : '#000', 
     });
   }, [isDarkMode, navigation]);
 
@@ -41,7 +41,7 @@ const ProfilePage = () => {
         <Text style={styles.toggleText}></Text>
         <Switch
           value={isDarkMode}
-          onValueChange={(value) => setIsDarkMode(value)} // Toggle dark mode
+          onValueChange={(value) => setIsDarkMode(value)} 
           thumbColor={isDarkMode ? '#ffafb8' : '#333'}
           trackColor={{ false: '#ccc', true: '#888' }}
         />
@@ -55,7 +55,7 @@ const ProfilePage = () => {
 
       <View style={styles.imageContainer}>
         <Image
-          source={require('../assets/Marealle.jpg')} // Local image
+          source={require('../assets/Marealle.jpg')} 
           style={styles.profileImage}
         />
       </View>

@@ -11,7 +11,7 @@ const SignUp = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
 
-  const navigation = useNavigation();  // Navigation hook to navigate between screens
+  const navigation = useNavigation();
 
   useEffect(() => {
     navigation.setOptions({
@@ -40,7 +40,7 @@ const SignUp = () => {
       </TouchableOpacity>
 
       {/* Robot Icon */}
-      <Image 
+      <Image
         source={{ uri: 'https://i.pinimg.com/originals/4b/06/e3/4b06e393fd0647c265b1282b0f006486.gif' }}
         style={styles.robotIcon}
       />
@@ -95,14 +95,6 @@ const SignUp = () => {
           onChangeText={setPassword}
           secureTextEntry={!isPasswordVisible}
         />
-        <TouchableOpacity onPress={togglePasswordVisibility}>
-          <Ionicons
-            name={isPasswordVisible ? 'eye' : 'eye-off'}
-            size={20}
-            color={darkMode ? '#ccc' : '#666'}
-            style={styles.icon}
-          />
-        </TouchableOpacity>
       </View>
 
       {/* Sign Up Button */}
@@ -130,17 +122,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 16,
   },
-  lightSignUpText:{
+  lightSignUpText: {
     color: '#333',
   },
   darkSignUpText: {
     color: '#ffe5e5',
   },
   lightContainer: {
-    backgroundColor: '#ffe6e6', // Light pink background for light mode
+    backgroundColor: '#ffe6e6',
   },
   darkContainer: {
-    backgroundColor: '#333', // Dark background for dark mode
+    backgroundColor: '#333',
   },
   toggleButton: {
     position: 'absolute',
@@ -201,10 +193,10 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   lightButton: {
-    backgroundColor: '#ff6666', // Pink color for light mode button
+    backgroundColor: '#ff6666',
   },
   darkButton: {
-    backgroundColor: '#ff6666', // Pink color for dark mode button
+    backgroundColor: '#ff6666',
   },
   buttonText: {
     color: '#fff',
@@ -213,11 +205,11 @@ const styles = StyleSheet.create({
   },
   loginLink: {
     marginTop: 15,
-    flexDirection: 'row', 
+    flexDirection: 'row',
   },
-  loginButtonText : {
+  loginButtonText: {
     fontWeight: 'bold',
-    fontSize: 16
+    fontSize: 16,
   },
   loginText: {
     fontSize: 16,
@@ -227,6 +219,12 @@ const styles = StyleSheet.create({
   },
   darkTextLogin: {
     color: '#ffafb8',
+  },
+  eyeIconContainer: {
+    position: 'absolute',
+    right: 10,
+    top: '50%',
+    transform: [{ translateY: -12 }],
   },
 });
 

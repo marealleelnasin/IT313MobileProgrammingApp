@@ -45,8 +45,8 @@ export default function AppNavigator() {
           component={PasswordRecovery}
           options={{ title: 'Password Recovery',
             headerStyle: {
-              backgroundColor: '#EFE9E2',
-              borderBottomColor: '#EFE9E2',
+              backgroundColor: '#ffe6e6',
+              borderBottomColor: '#ffe6e6',
               headerTintColor: '#000',
             }
           }}/>
