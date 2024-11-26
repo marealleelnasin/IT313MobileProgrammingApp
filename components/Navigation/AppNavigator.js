@@ -3,23 +3,60 @@ import { Alert, View, Text } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import Ionicons from 'react-native-vector-icons/Ionicons'; // Icon for Logout button
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Ionicons from 'react-native-vector-icons/Ionicons'; 
 
-// Import screens
 import LoginScreen from '../LoginScreen';
 import ProfilePage from '../ProfilePage';
 import SignUpScreen from '../SignUpScreen';
 import PasswordRecovery from '../PasswordRecovery';
 
-
-// Placeholder for Settings Screen
 const SettingsScreen = () => (
   <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#EFE9E2' }}>
     <Text style={{ fontSize: 18, color: '#333' }}>Settings Page (Coming Soon)</Text>
   </View>
 );
 
-// Drawer Navigator
+const Tab = createBottomTabNavigator();
+function TabNavigator() {
+  return (
+    <Tab.Navigator
+      initialRouteName="Home"
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused, color, size }) => {
+          let iconName;
+
+          if (route.name === 'Home') {
+            iconName = focused ? 'home' : 'home-outline';
+          } else if (route.name === 'Profile') {
+            iconName = focused ? 'person' : 'person-outline';
+          } else if (route.name === 'Settings') {
+            iconName = focused ? 'settings' : 'settings-outline';
+          }
+
+          return <Ionicons name={iconName} size={size} color={color} />;
+        },
+        tabBarActiveTintColor: '#ff6b81',
+        tabBarInactiveTintColor: 'gray',
+      })}
+    >
+      <Tab.Screen name="Home" component={ProfilePage} />
+      <Tab.Screen name="Profile" component={ProfilePage} />
+      <Tab.Screen 
+        name="Settings" 
+        component={SettingsScreen} 
+        options={{
+          tabBarLabelStyle: {
+            backgroundColor: 'rgb(239, 233, 226)', 
+            borderBottomColor: 'rgb(239, 233, 226)', 
+            borderBottomWidth: 2, 
+          },
+        }}
+      />
+    </Tab.Navigator>
+  );
+}
+
 const Drawer = createDrawerNavigator();
 function DrawerNavigator() {
   const handleLogout = (navigation) => {
@@ -33,7 +70,7 @@ function DrawerNavigator() {
           onPress: () => {
             navigation.reset({
               index: 0,
-              routes: [{ name: 'Login' }], // Navigate to Login and reset stack
+              routes: [{ name: 'LoginScreen' }], 
             });
           },
         },
@@ -43,39 +80,35 @@ function DrawerNavigator() {
 
   return (
     <Drawer.Navigator
-      initialRouteName="Home"
+      initialRouteName="Dashboard" 
       screenOptions={{
         headerStyle: { backgroundColor: '#EFE9E2' },
         headerTintColor: '#000',
       }}
     >
-      {/* Home Screen */}
       <Drawer.Screen 
-        name="Home" 
-        component={ProfilePage} 
-        options={{ title: 'Home' }} 
+        name="Dashboard"  
+        component={TabNavigator}  
+        options={{ title: 'Dashboard' }}  
       />
 
-      {/* Settings Screen */}
       <Drawer.Screen 
         name="Settings" 
         component={SettingsScreen} 
         options={{
           title: 'Settings',
           headerStyle: {
-            backgroundColor: '#EFE9E2',
-            borderBottomColor: 'rgb(239, 233, 226)',
-            borderBottomWidth: 1,
+            backgroundColor: '#EFE9E2',  
+            borderBottomColor: '#EFE9E2', 
+            borderBottomWidth: 1,  
           },
         }}
       />
 
-      {/* Logout Screen */}
       <Drawer.Screen 
         name="Logout" 
-        component={LoginScreen} // No actual screen needed
+        component={LoginScreen} 
         options={{
-
           drawerIcon: ({ color }) => (
             <Ionicons name="log-out-outline" size={24} color={color} />
           ),
@@ -88,27 +121,27 @@ function DrawerNavigator() {
   );
 }
 
-// Stack Navigator
+
 const Stack = createStackNavigator();
 export default function AppNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Login">
-        {/* Login Screen */}
+
         <Stack.Screen
           name="Login"
           component={LoginScreen}
           options={{ headerShown: false }}
         />
 
-        {/* Drawer Navigator */}
+
         <Stack.Screen
           name="ProfilePage"
           component={DrawerNavigator}
           options={{ headerShown: false }}
         />
 
-        {/* Sign Up Screen */}
+
         <Stack.Screen
           name="SignUpScreen"
           component={SignUpScreen}
@@ -119,7 +152,6 @@ export default function AppNavigator() {
           }}
         />
 
-        {/* Password Recovery Screen */}
         <Stack.Screen
           name="PasswordRecovery"
           component={PasswordRecovery}

@@ -15,15 +15,15 @@ const ProfilePage = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  // Set header styles based on dark mode
+
   useEffect(() => {
     navigation.setOptions({
       headerStyle: {
-        backgroundColor: isDarkMode ? '#333' : '#EFE9E2',  // Dark mode: #333, Light mode: #EFE9E2
+        backgroundColor: isDarkMode ? '#333' : '#EFE9E2',  
         borderBottomColor: isDarkMode ? '#333' : '#EFE9E2',
         borderBottomWidth: 2,
       },
-      headerTintColor: isDarkMode ? '#FFF' : '#000',  // Dark mode: white text, Light mode: black text
+      headerTintColor: isDarkMode ? '#FFF' : '#000',  
     });
   }, [isDarkMode, navigation]);
 
@@ -95,14 +95,14 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: '#EFE9E2',  // Light mode background
+    backgroundColor: '#EFE9E2',  
     alignItems: 'center',
     paddingTop: 50,
     paddingHorizontal: 20,
     position: 'relative', 
   },
   containerDark: {
-    backgroundColor: '#333',  // Dark mode background
+    backgroundColor: '#333',  
   },
   toggleButtonContainer: {
     position: 'absolute',
@@ -140,11 +140,11 @@ const styles = StyleSheet.create({
   nameText: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#887a7a',  // Light mode text color
+    color: '#887a7a',  
     marginBottom: 5,
   },
   nameTextDark: {
-    color: '#fff',  // Dark mode text color
+    color: '#fff',  
   },
   socialIconsContainer: {
     flexDirection: 'column',

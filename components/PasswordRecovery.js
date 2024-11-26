@@ -10,7 +10,6 @@ export default function PasswordRecovery() {
   const navigation = useNavigation();
   
   useLayoutEffect(() => {
-    // Adjust stack navigator header colors based on dark mode
     navigation.setOptions({
       headerStyle: {
         backgroundColor: isDarkMode ? '#333' : '#FFE5E5',
@@ -23,7 +22,6 @@ export default function PasswordRecovery() {
   const styles = isDarkMode ? darkStyles : lightStyles;
 
   const handlePasswordRecovery = () => {
-    // Logic for handling password recovery, e.g., API call
     console.log(`Password recovery link sent to: ${email}`);
   };
 
@@ -56,7 +54,6 @@ export default function PasswordRecovery() {
   );
 }
 
-// Shared and Mode-Specific Styles
 const commonStyles = {
   container: {
     flex: 1,

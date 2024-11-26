@@ -163,12 +163,12 @@ const commonStyles = {
     marginBottom: 20,
   },
   forgotPasswordWrapper: {
-    width: '100%',  // Ensure it takes up the full width
-    alignItems: 'flex-end', // Align the text to the right
+    width: '100%',  
+    alignItems: 'flex-end', 
   },
   forgotPasswordText: {
     fontSize: 14,
-    color: '#000',  // Default color for light mode
+    color: '#000',  
     marginBottom: 10,
   },
   socialLoginContainer: {
@@ -269,7 +269,7 @@ const darkStyles = StyleSheet.create({
   },
   forgotPasswordText: {
     ...commonStyles.forgotPasswordText,
-    color: '#fff',  // Dark mode color
+    color: '#fff',  
   },
   inputContainer: {
     ...commonStyles.inputContainer,
