@@ -9,21 +9,21 @@ const ProfilePage = () => {
   const navigation = useNavigation(); 
 
   useEffect(() => {
-    
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 2000);
     return () => clearTimeout(timer);
   }, []);
 
+  // Set header styles based on dark mode
   useEffect(() => {
     navigation.setOptions({
       headerStyle: {
-        backgroundColor: isDarkMode ? '#333' : '#EFE9E2', 
+        backgroundColor: isDarkMode ? '#333' : '#EFE9E2',  // Dark mode: #333, Light mode: #EFE9E2
         borderBottomColor: isDarkMode ? '#333' : '#EFE9E2',
         borderBottomWidth: 2,
       },
-      headerTintColor: isDarkMode ? '#fff' : '#000', 
+      headerTintColor: isDarkMode ? '#FFF' : '#000',  // Dark mode: white text, Light mode: black text
     });
   }, [isDarkMode, navigation]);
 
@@ -95,14 +95,14 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: '#efe9e2',
+    backgroundColor: '#EFE9E2',  // Light mode background
     alignItems: 'center',
     paddingTop: 50,
     paddingHorizontal: 20,
     position: 'relative', 
   },
   containerDark: {
-    backgroundColor: '#333', 
+    backgroundColor: '#333',  // Dark mode background
   },
   toggleButtonContainer: {
     position: 'absolute',
@@ -140,11 +140,11 @@ const styles = StyleSheet.create({
   nameText: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#887a7a', 
+    color: '#887a7a',  // Light mode text color
     marginBottom: 5,
   },
   nameTextDark: {
-    color: '#fff', 
+    color: '#fff',  // Dark mode text color
   },
   socialIconsContainer: {
     flexDirection: 'column',
