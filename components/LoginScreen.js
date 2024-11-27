@@ -25,7 +25,7 @@ export default function LoginScreen() {
     if (username === 'user' && password === 'password') {
       navigation.navigate('ProfilePage'); 
     } else {
-      alert('Invalid credentials');
+      alert('Invalid credentials, use "user" for Email and "password" for Password!');
     }
   };
 
@@ -46,7 +46,7 @@ export default function LoginScreen() {
         resizeMode="contain"
       />
 
-      <Text style={styles.title}>Login</Text>
+      <Text style={styles.title}>Mareallistic</Text>
 
       <View style={styles.inputContainer}>
         <View style={styles.iconInput}>
